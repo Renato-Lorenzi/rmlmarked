@@ -3,13 +3,13 @@ if(!xmp){
   return;
 }
 
-x=xmp[0];
+var x=xmp[0];
 if(!x){
   return;
 }
-y=x.childNodes[0];
-txt=y.nodeValue;
+var y = x.childNodes[0];
+var txt = y.nodeValue;
 var rmlmarked = require("./RMLMarked");
-contentDiv = document.createElement('div');		
+var contentDiv = document.createElement('div');		
 contentDiv.innerHTML = rmlmarked(txt);		
 x.parentNode.replaceChild(contentDiv,x);

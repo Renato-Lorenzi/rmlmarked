@@ -32,6 +32,27 @@ function rmlmarked(markdown){
 	  return ret;	  
 	};	
 
+	renderer.table = function(header, body) {
+	    return '<table class="pure-table pure-table-bordered">\n'
+	    	+ '<thead>\n'
+	    	+ header
+		    + '</thead>\n'
+		    + '<tbody>\n'
+		    + body
+		    + '</tbody>\n'
+		    + '</table>\n';
+	}
+
+    var isOdd = false;
+
+    renderer.tablerow = function(content) {
+    	var clazz = isOdd ? 'class="pure-table-odd"' : "";
+    	isOdd = !isOdd;
+  		return '<tr '+ clazz + ' >\n' + content + '</tr>\n';
+	};	
+
+
+
 	return marked(markdown, { renderer: renderer }).replace("[TOC]", toc.generate());				
 }
 
@@ -11183,14 +11204,14 @@ if(!xmp){
   return;
 }
 
-x=xmp[0];
+var x=xmp[0];
 if(!x){
   return;
 }
-y=x.childNodes[0];
-txt=y.nodeValue;
+var y = x.childNodes[0];
+var txt = y.nodeValue;
 var rmlmarked = require("./RMLMarked");
-contentDiv = document.createElement('div');		
+var contentDiv = document.createElement('div');		
 contentDiv.innerHTML = rmlmarked(txt);		
 x.parentNode.replaceChild(contentDiv,x);
 },{"./RMLMarked":1}],118:[function(require,module,exports){

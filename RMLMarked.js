@@ -31,6 +31,27 @@ function rmlmarked(markdown){
 	  return ret;	  
 	};	
 
+	renderer.table = function(header, body) {
+	    return '<table class="pure-table pure-table-bordered">\n'
+	    	+ '<thead>\n'
+	    	+ header
+		    + '</thead>\n'
+		    + '<tbody>\n'
+		    + body
+		    + '</tbody>\n'
+		    + '</table>\n';
+	}
+
+    var isOdd = false;
+
+    renderer.tablerow = function(content) {
+    	var clazz = isOdd ? 'class="pure-table-odd"' : "";
+    	isOdd = !isOdd;
+  		return '<tr '+ clazz + ' >\n' + content + '</tr>\n';
+	};	
+
+
+
 	return marked(markdown, { renderer: renderer }).replace("[TOC]", toc.generate());				
 }
 
