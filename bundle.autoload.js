@@ -11178,7 +11178,15 @@ if (typeof exports === 'object') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],117:[function(require,module,exports){
-x=document.getElementsByTagName("xmp")[0];
+var xmp = document.getElementsByTagName("xmp");
+if(!xmp){
+  return;
+}
+
+x=xmp[0];
+if(!x){
+  return;
+}
 y=x.childNodes[0];
 txt=y.nodeValue;
 var rmlmarked = require("./RMLMarked");
