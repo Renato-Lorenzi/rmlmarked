@@ -50,7 +50,7 @@ TOCGenerator.prototype.add = function (text, level, escapedText){
 }
 
 TOCGenerator.prototype.generate = function(){		
-	var marked = require("marked");
+	var marked = require("marked");	
 	return marked(this.markdown);
 }
 

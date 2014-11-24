@@ -51,7 +51,7 @@ TOCGenerator.prototype.add = function (text, level, escapedText){
 }
 
 TOCGenerator.prototype.generate = function(){		
-	var marked = require("marked");
+	var marked = require("marked");	
 	return marked(this.markdown);
 }
 
@@ -11178,61 +11178,13 @@ if (typeof exports === 'object') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],117:[function(require,module,exports){
-loadjscssfile("old/default.min.css", "css", function(){
-	x=document.getElementsByTagName("xmp")[0];
-	y=x.childNodes[0];
-	txt=y.nodeValue;
-	var rmlmarked = require("./RMLMarked");
-
-	contentDiv = document.createElement('div');		
-	contentDiv.innerHTML = rmlmarked(txt);		
-	x.parentNode.replaceChild(contentDiv,x);
-});
-
-
-
-
-
-
-
-
-
-
-function loadjscssfile(filename, filetype, callback){	
- if (filetype=="js"){ //if filename is a external JavaScript file
-  var fileref=document.createElement('script')
-  fileref.setAttribute("type","text/javascript")
-  fileref.setAttribute("src", filename)
- }
- else if (filetype=="css"){ //if filename is an external CSS file
-  var fileref=document.createElement("link")
-  fileref.setAttribute("rel", "stylesheet")
-  fileref.setAttribute("type", "text/css")
-  fileref.setAttribute("href", filename)
- }
-
-if (filetype.readyState){  //IE
-        fileref.onreadystatechange = function(){
-            if (fileref.readyState == "loaded" ||
-                    fileref.readyState == "complete"){
-                fileref.onreadystatechange = null;
-                callback();
-            }
-        };
-    } else {  //Others
-        fileref.onload = function(){
-            callback();
-        };
-    }
-
- if (typeof fileref!="undefined")
-  document.getElementsByTagName("head")[0].appendChild(fileref)
-}
-
-
-
-
-
+x=document.getElementsByTagName("xmp")[0];
+y=x.childNodes[0];
+txt=y.nodeValue;
+var rmlmarked = require("./RMLMarked");
+contentDiv = document.createElement('div');		
+contentDiv.innerHTML = rmlmarked(txt);		
+x.parentNode.replaceChild(contentDiv,x);
 },{"./RMLMarked":1}],118:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module

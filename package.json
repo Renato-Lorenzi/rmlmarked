@@ -1,0 +1,29 @@
+{
+  "name": "rmlmarked",
+  "version": "0.0.1",
+  "description": "Marked extension",
+  "main": "RMLMarked.js",
+  "dependencies": {
+    "highlight.js": "~8.4.0",
+    "marked": "~0.3.2",
+    "util": "~0.10.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Renato-Lorenzi/rmlmarked.git"
+  },
+  "keywords": [
+    "marked",
+    "markdown",
+    "js"
+  ],
+  "author": "Renato Lorenzi",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Renato-Lorenzi/rmlmarked/issues"
+  }
+}
