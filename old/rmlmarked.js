@@ -40,8 +40,7 @@ loadjscssfile("default.min.css", "css", function(){
 });
 
 
-function loadjscssfile(filename, filetype, callback){
-	filetype
+function loadjscssfile(filename, filetype, callback){	
  if (filetype=="js"){ //if filename is a external JavaScript file
   var fileref=document.createElement('script')
   fileref.setAttribute("type","text/javascript")
