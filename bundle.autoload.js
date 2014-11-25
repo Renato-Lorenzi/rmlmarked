@@ -6,14 +6,16 @@ function rmlmarked(markdown){
 	var hljs = require("highlight.js");	
 
 
-	// Synchronous highlighting with highlight.js
-	marked.setOptions({
+	var options = {
 	  highlight: function (code) {
 	    return hljs.highlightAuto(code).value;
 	  }
-	});
+	};
+	// Synchronous highlighting with highlight.js
+	marked.setOptions(options);
 
 	var toc;
+	var originRenderer = new marked.Renderer(options);
 	var renderer = new marked.Renderer();	
 	var indexToInsertTOC = markdown.indexOf("[TOC]");
 
@@ -31,27 +33,6 @@ function rmlmarked(markdown){
 	  					 level, escapedText, escapedText, text, level);
 	  return ret;	  
 	};	
-
-	renderer.table = function(header, body) {
-	    return '<table class="pure-table pure-table-bordered">\n'
-	    	+ '<thead>\n'
-	    	+ header
-		    + '</thead>\n'
-		    + '<tbody>\n'
-		    + body
-		    + '</tbody>\n'
-		    + '</table>\n';
-	}
-
-    var isOdd = false;
-
-    renderer.tablerow = function(content) {
-    	var clazz = isOdd ? 'class="pure-table-odd"' : "";
-    	isOdd = !isOdd;
-  		return '<tr '+ clazz + ' >\n' + content + '</tr>\n';
-	};	
-
-
 
 	return marked(markdown, { renderer: renderer }).replace("[TOC]", toc.generate());				
 }
@@ -11213,6 +11194,7 @@ var txt = y.nodeValue;
 var rmlmarked = require("./RMLMarked");
 var contentDiv = document.createElement('div');		
 contentDiv.innerHTML = rmlmarked(txt);		
+contentDiv.className = "markdown-body";
 x.parentNode.replaceChild(contentDiv,x);
 },{"./RMLMarked":1}],118:[function(require,module,exports){
 if (typeof Object.create === 'function') {

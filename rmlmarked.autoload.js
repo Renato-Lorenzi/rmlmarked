@@ -12,4 +12,5 @@ var txt = y.nodeValue;
 var rmlmarked = require("./RMLMarked");
 var contentDiv = document.createElement('div');		
 contentDiv.innerHTML = rmlmarked(txt);		
+contentDiv.className = "markdown-body";
 x.parentNode.replaceChild(contentDiv,x);
