@@ -13,8 +13,7 @@ Downloaded from:
 .markdown-body pre {
     /* Below are styles for the codebox (not the code itself) */
     border:1px solid #cbcbcb;
-    background-color:#EEEEFF;
-    width:300px;
+    background-color:#EEEEFF;    
     overflow:auto;    
     padding:10px;
 }
