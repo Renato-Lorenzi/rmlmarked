@@ -33,7 +33,8 @@ function rmlmarked(markdown){
 	  return ret;	  
 	};	
 
-	return marked(markdown, { renderer: renderer }).replace("[TOC]", toc.generate());				
+
+	return marked(markdown, { renderer: renderer }).replace("[TOC]", toc.generate());
 }
 
 
@@ -43,9 +44,9 @@ function TOCGenerator(){
 }
 
 TOCGenerator.prototype.add = function (text, level, escapedText){
-	var item = " ";
+	var item = "   ";
 	 for(i = 1; i < level; i++){
-	 	item += " ";
+	 	item += "   ";
 	 }
 
 	this.markdown += util.format("%s* [%s](#%s)\n", item, text, escapedText);	

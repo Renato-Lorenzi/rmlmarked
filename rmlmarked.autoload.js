@@ -1,9 +1,9 @@
-var xmp = document.getElementsByTagName("xmp");
-if(!xmp){
+var pre = document.getElementsByTagName("pre");
+if(!pre){
   return;
 }
 
-var x=xmp[0];
+var x=pre[0];
 if(!x){
   return;
 }
