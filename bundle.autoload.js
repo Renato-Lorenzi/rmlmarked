@@ -5,18 +5,16 @@ function rmlmarked(markdown){
 	var marked = require("marked");
 	var hljs = require("highlight.js");	
 
-
+	// Synchronous highlighting with highlight.js
 	var options = {
 	  highlight: function (code) {
 	    return hljs.highlightAuto(code).value;
 	  }
 	};
-	// Synchronous highlighting with highlight.js
-	marked.setOptions(options);
+		
 
 	var toc;
-	var originRenderer = new marked.Renderer(options);
-	var renderer = new marked.Renderer();	
+	var renderer = new marked.Renderer(options);	
 	var indexToInsertTOC = markdown.indexOf("[TOC]");
 
 	renderer.heading = function (text, level) {
@@ -55,7 +53,7 @@ TOCGenerator.prototype.add = function (text, level, escapedText){
 
 TOCGenerator.prototype.generate = function(){		
 	var marked = require("marked");	
-	return marked(this.markdown);
+	return marked(this.markdown.trim(), {renderer: marked.Renderer()});
 }
 
 
