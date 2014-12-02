@@ -6,7 +6,8 @@
   "dependencies": {
     "highlight.js": "~8.4.0",
     "marked": "~0.3.2",
-    "util": "~0.10.3"
+    "util": "~0.10.3",
+    "slugify": "~0.1.0"
   },
   "devDependencies": {},
   "scripts": {
