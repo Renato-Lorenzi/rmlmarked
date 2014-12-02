@@ -8,20 +8,26 @@ var slugify = require('slugify');
 var FIRST_HEADER = "<!--FIRST_HEADER_MARKDOWN-->";
 var TOC_MARK = "[TOC]";
 
+
+/** 
+  * rmlmarked main function
+  *
+  * {string} markdown - Markdown to convert to html
+  */
 function rmlmarked(markdown){
 	var marked = require("marked");
 	var hljs = require("highlight.js");	
 
-	// Synchronous highlighting with highlight.js
 	var options = {
-	  highlight: function (code) {
+	  highlight: function (code) {	  	
 	    return hljs.highlightAuto(code).value;
 	  }
 	};
-		
+	// Synchronous highlighting with highlight.js
+	marked.setOptions(options);			
 
 	var toc = new TOCGenerator();
-	var renderer = new marked.Renderer(options);
+	var renderer = new marked.Renderer();
 	var oriRender = new marked.Renderer(options);
 	var indexOfTOC = markdown.indexOf("[TOC]");
 	var foundTOC = false;	
