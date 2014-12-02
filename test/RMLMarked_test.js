@@ -44,5 +44,8 @@ describe('RMLMarked', function (){
 				  "[TOC]\n" +
 				  "##header2").
 				should.equal('<p>testmarkdown text toc after</p>\n<!--FIRST_HEADER_MARKDOWN--><h2><a name=\"header1\" class=\"anchor\" href=\"#header1\"><span class=\"header-link\"></span></a>header1</h2><p><ul>\n<li><a href=\"#header2\">header2</a></li>\n</ul>\n</p>\n<h2><a name=\"header2\" class=\"anchor\" href=\"#header2\"><span class=\"header-link\"></span></a>header2</h2>');
+	}),
+	it('Should return without TOC', function(){		
+		rmlmarked("testmarkdown without TOC").should.equal('<p>testmarkdown without TOC</p>\n');
 	})
 })
