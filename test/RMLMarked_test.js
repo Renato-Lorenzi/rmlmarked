@@ -3,7 +3,7 @@ require("chai").should();
 
 var rmlmarked = require("../RMLMarked");
 
-describe('RMLMarked', function (){
+describe('RMLMarked - Testing TOC', function (){
 	it('Should return alright simple toc', function(){
 		rmlmarked("#teste").
 				should.equal('<ul>\n' + 
@@ -47,5 +47,19 @@ describe('RMLMarked', function (){
 	}),
 	it('Should return without TOC', function(){		
 		rmlmarked("testmarkdown without TOC").should.equal('<p>testmarkdown without TOC</p>\n');
+	}),
+	it('Should return slugified link references to TOC', function(){		
+		rmlmarked("#táúíóéç~´ãẽàè").should.equal('<ul>\n<li><a href=\"#tauioec~aae\">táúíóéç~´ãẽàè</a></li>\n</ul>\n<h1><a name=\"tauioec~aae\" class=\"anchor\" href=\"#tauioec~aae\"><span class=\"header-link\"></span></a>táúíóéç~´ãẽàè</h1>');
+	})
+});
+
+describe('RMLMarked - Other tests', function(){	
+	it('Should return formatted code block with highlight.js lib', function(){		
+		rmlmarked("#testmarkdown\n"+ 
+				  "test code:\n" + 
+				  "```java\n" +
+				  "		public class Test{\n"+
+				  "		}\n" +
+				  "```").should.equal('<ul>\n<li><a href=\"#testmarkdown\">testmarkdown</a></li>\n</ul>\n<h1><a name=\"testmarkdown\" class=\"anchor\" href=\"#testmarkdown\"><span class=\"header-link\"></span></a>testmarkdown</h1><p>test code:</p>\n<pre><code class=\"lang-java\">        <span class=\"hljs-keyword\">public</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">Test</span></span>{\n        }\n</code></pre>\n');
 	})
 })
